@@ -7,6 +7,11 @@ public class Filme {
 	protected double valorCompra;
 	protected Genero genero;
 
+	/**
+	 * 
+	 * @param nome
+	 * @param genero
+	 */
 	public Filme(String nome, Genero genero) {
 		this.nome = nome;
 		this.genero = genero;
