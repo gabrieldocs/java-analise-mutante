@@ -77,8 +77,28 @@ public class Transacao {
 	 * 3) O sistema deverá permitir consultar quais os generos mais alugados entre todos os alugueis
 	 * @return
 	 */
-	public ArrayList<Locacao> consultaGeneroMaisAlugados() {
-		return this.alugueis;
+	public Genero consultaGeneroMaisAlugados() {
+		int comedia = 0;
+		int romance = 0;
+		int drama = 0;
+		
+		for(Locacao l: alugueis) {
+			if(l.filme.genero == Genero.COMEDIA) {
+				comedia +=1;
+			} else if(l.filme.genero == Genero.DRAMA) {
+				drama +=1;
+			} else if(l.filme.genero == Genero.ROMANCE) {
+				romance +=1;
+			}
+		}
+		
+		if(comedia > romance && comedia > drama) {
+			return Genero.COMEDIA;
+		} else if(romance > comedia && romance > drama) {
+			return Genero.ROMANCE;
+		} else {
+			return Genero.DRAMA;
+		}
 	}
 	
 	public void imprimeLocacoes() {
@@ -88,7 +108,7 @@ public class Transacao {
 		for(Locacao l: alugueis) {
 			System.out.println(l.filme.nome);
 		}
-		System.out.println("========================");
+		System.out.println("------------------------");
 	}
 	
 }

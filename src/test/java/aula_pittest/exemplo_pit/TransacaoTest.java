@@ -28,7 +28,7 @@ public class TransacaoTest {
 		filme1 = new Filme("Java", Genero.ROMANCE);
 		filme1.valorCompra = 100;
 
-		filme2 = new Filme("JavaScript", Genero.ROMANCE);
+		filme2 = new Filme("JavaScript", Genero.DRAMA);
 		filme2.valorCompra = 50;
 		filme2.id=20;
 		
@@ -96,20 +96,16 @@ public class TransacaoTest {
 		
 		assertEquals(50,transacao.calculoLucro(20),0.01);
 	}
-	public void test1() {
-
-		assertEquals(Math.PI, 3.14, 0.01);
-		assertTrue("java".equalsIgnoreCase("Java"));
-		Filme f =new Filme("a", Genero.ROMANCE);
-		assertNull(f); // assertNotNull();
-		Filme f2 =new Filme("a", Genero.ROMANCE);
-
-		assertTrue(f==f2);
-		
-		assertSame(f, f2); // asserNotSame)();
-
-		assertTrue("Comparacao de objetos", f == f2);
-
+	
+	@Test 
+	public void consultaGeneroMaisAlugados() {
+		transacao.alugueis.add(locacao1);
+		transacao.alugueis.add(locacao2);
+		transacao.alugueis.add(locacao2);
+		transacao.alugueis.add(locacao1);
+		transacao.alugueis.add(locacao2);
+		System.out.println(transacao.consultaGeneroMaisAlugados());
+		assertEquals(transacao.consultaGeneroMaisAlugados(), Genero.DRAMA);
 	}
 
 }
